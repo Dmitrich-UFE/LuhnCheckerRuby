@@ -9,9 +9,15 @@ class TestLuhnChecker < Minitest::Test
   end
 
   def test_length_of_bank_card_number_too_short
-    refute LuhnCheckerLib.is_valid_bank_card_number?(233_452_003_452_123)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(452_003_452_123)
     refute LuhnCheckerLib.is_valid_bank_card_number?(18_262_879)
     refute LuhnCheckerLib.is_valid_bank_card_number?(2)
     refute LuhnCheckerLib.is_valid_bank_card_number?(0)
+  end
+
+  def test_length_of_bank_card_number_too_long
+    refute LuhnCheckerLib.is_valid_bank_card_number?(452_003_452_123_837_837_123)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(18_262_879_854_393_777_666_555)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(562_736_928_510_327_379_982_837)
   end
 end

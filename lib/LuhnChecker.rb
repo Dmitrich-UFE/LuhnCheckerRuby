@@ -15,15 +15,14 @@ module LuhnCheckerLib
     check_sum = digits.pop
     sum = digits.reverse.each_with_index do |digit, index|
       if index.even?
-        digit *= 2
-        digit - 9 if digit > 9
+        doubled = digit * 2
+        doubled > 9 ? doubled - 9 : doubled
       else
         digit
       end
-    end
+    end.sum
 
-    calculated_checksum = (10 - (sum % 10)) % 10
-    check_sum == calculated_checksum
+    check_sum == (10 - (sum % 10)) % 10
   end
 
   # Checks validity of IMEI
