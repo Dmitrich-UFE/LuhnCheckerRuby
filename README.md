@@ -1,38 +1,22 @@
 # LuhnChecker
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/LuhnChecker`. To experiment with that code, run `bin/console` for an interactive prompt.
+A library with methods for checking validity of IMEI, ICCID and bank card numbers.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+This gem wasn't published on RubyGems.
 
-Install the gem and add to the application's Gemfile by executing:
+Local:
+    Open <span style = "color:orange">Gemfile</span> in your project, add gem: <span style = "color:orange">'gem LuhnChecker', path: 'your_path_to_local_gem'</span> and run <span style = "color:orange">'bundle install'</span>. In your ruby scripts connect the library: <span style = "color:orange">require LuhnChecker</span>.
 
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
 
 ## Usage
 
-TODO: Write usage instructions here
+After installing, connect the lib into your ruby scripts: <span style = "color:orange">require LuhnChecker</span>.
 
-## Development
+Methods:
+    LuhnCheckerLib.is_valid_bank_card_number?(your_bank_card_number) - it returns true, if your_bank_card_number is valid; else false.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/LuhnChecker.
 
 ## License
 

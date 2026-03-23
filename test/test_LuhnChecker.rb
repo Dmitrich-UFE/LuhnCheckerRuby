@@ -47,6 +47,15 @@ class TestLuhnChecker < Minitest::Test
     refute LuhnCheckerLib.is_valid_bank_card_number?(620_000_000_000_000_003)
     refute LuhnCheckerLib.is_valid_bank_card_number?(2_200_000_000_000_000_009)
   end
+
+  def test_validity_of_card_false_incorrect_broken_card_number
+    refute LuhnCheckerLib.is_valid_bank_card_number?(2_200_703_101_204_427)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(2_202_701_819_218_420)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(4_012_888_897_881)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(378_282_246_310_125)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(620_000_012_000_060_005)
+    refute LuhnCheckerLib.is_valid_bank_card_number?(2_200_000_010_010_000_004)
+  end
 end
 
 # bundle exec ruby -Ilib:test test/test_LuhnChecker.rb
