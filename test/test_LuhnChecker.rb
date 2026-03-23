@@ -20,4 +20,19 @@ class TestLuhnChecker < Minitest::Test
     refute LuhnCheckerLib.is_valid_bank_card_number?(18_262_879_854_393_777_666_555)
     refute LuhnCheckerLib.is_valid_bank_card_number?(562_736_928_510_327_379_982_837)
   end
+
+  def test_validity_of_card_true_16_digits
+    assert LuhnCheckerLib.is_valid_bank_card_number?(2_200_702_099_204_427)
+    assert LuhnCheckerLib.is_valid_bank_card_number?(2_200_701_809_218_420)
+  end
+
+  def test_validity_of_card_true_less_than_16_digits
+    assert LuhnCheckerLib.is_valid_bank_card_number?(4_012_888_888_881)
+    assert LuhnCheckerLib.is_valid_bank_card_number?(378_282_246_310_005)
+  end
+
+  def test_validity_of_card_true_bigger_than_16_digits
+    assert LuhnCheckerLib.is_valid_bank_card_number?(620_000_000_000_000_005)
+    assert LuhnCheckerLib.is_valid_bank_card_number?(2_200_000_000_000_000_004)
+  end
 end

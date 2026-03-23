@@ -13,7 +13,7 @@ module LuhnCheckerLib
     return false unless digits.length.between?(13, 19)
 
     check_sum = digits.pop
-    sum = digits.reverse.each_with_index do |digit, index|
+    sum = digits.reverse.each_with_index.map do |digit, index|
       if index.even?
         doubled = digit * 2
         doubled > 9 ? doubled - 9 : doubled
