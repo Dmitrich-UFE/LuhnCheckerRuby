@@ -7,7 +7,8 @@ module LuhnCheckerLib
   #Checks validity of bank card number
   def IsValidBankCardNumber?(bankcardnumber)
     digits = bankcardnumber.to_s.gsub(/\D/, '').chars.map(&:to_i)
-    return false if digits.empty?
+
+    return false unless digits.length.between?(13, 19)
   
     check_sum = digits.pop
     sum = digits.reverse.each_with_index do |digit, index|
