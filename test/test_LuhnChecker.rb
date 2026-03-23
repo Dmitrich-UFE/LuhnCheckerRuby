@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'minitest/autorun'
 require_relative '../LuhnChecker'
 
 class TestLuhnChecker < Minitest::Test
