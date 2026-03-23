@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["UndabarFaultEns"]
   spec.email = ["justarcane@vk.com"]
 
-  spec.summary = "A gem to check validate IMEI, ICCID & Bank Card number."
+  spec.summary = "A gem to check validity IMEI, ICCID & Bank Card number."
   spec.description = ""
   spec.homepage = "https://github.com/Dmitrich-UFE/LuhnCheckerRuby"
   spec.license = "MIT"
