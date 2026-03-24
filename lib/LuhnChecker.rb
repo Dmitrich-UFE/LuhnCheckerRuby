@@ -46,7 +46,23 @@ module LuhnCheckerLib
   end
 
   # Checks validity of ICCID
-  def is_valid_ICCID?(iccID)
-    nil
+  def is_valid_ICCID?(iccid)
+    digits = iccid.to_s.gsub(/\D/, "").chars.map(&:to_i)
+
+    return false unless digits.length.between?(18, 20)
+    return false unless iccid.start_with?("89")
+
+    provided_checksum = digits.pop
+
+    sum = digits.reverse.each_with_index.map do |digit, index|
+      if index.even?
+        doubled = digit * 2
+        doubled > 9 ? doubled - 9 : doubled
+      else
+        digit
+      end
+    end.sum
+
+    provided_checksum == (10 - (sum % 10)) % 10
   end
 end
