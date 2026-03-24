@@ -58,4 +58,17 @@ class TestLuhnChecker_bankCard_number < Minitest::Test
   end
 end
 
+class TestLuhnChecker_imei < Minitest::Test
+  def test_length_of_imei_too_long
+    refute LuhnCheckerLib.is_valid_IMEI?(86_004_108_979_539_012)
+    refute LuhnCheckerLib.is_valid_IMEI?(8_600_410_897_953_828_376)
+  end
+
+  def test_length_of_imei_too_short
+    refute LuhnCheckerLib.is_valid_IMEI?(86_004_108_979)
+    refute LuhnCheckerLib.is_valid_IMEI?(8606)
+    refute LuhnCheckerLib.is_valid_IMEI?(0)
+  end
+end
+
 # bundle exec ruby -Ilib:test test/test_LuhnChecker.rb
