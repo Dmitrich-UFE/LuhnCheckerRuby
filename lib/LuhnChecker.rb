@@ -27,7 +27,22 @@ module LuhnCheckerLib
 
   # Checks validity of IMEI
   def is_valid_IMEI?(imei)
-    nil
+    digits = imei.to_s.gsub(/\D/, "").chars.map(&:to_i)
+
+    return false unless digits.length == 15
+
+    provided_checksum = digits.pop
+
+    sum = digits.reverse.each_with_index.map do |digit, index|
+      if index.even?
+        doubled = digit * 2
+        doubled > 9 ? doubled - 9 : doubled
+      else
+        digit
+      end
+    end.sum
+
+    provided_checksum == (10 - (sum % 10)) % 10
   end
 
   # Checks validity of ICCID

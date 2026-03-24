@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require_relative "../lib/LuhnChecker"
 
-class TestLuhnChecker < Minitest::Test
+class TestLuhnChecker_bankCard_number < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::LuhnChecker::VERSION
   end
