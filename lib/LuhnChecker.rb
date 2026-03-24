@@ -47,10 +47,11 @@ module LuhnCheckerLib
 
   # Checks validity of ICCID
   def is_valid_ICCID?(iccid)
-    digits = iccid.to_s.gsub(/\D/, "").chars.map(&:to_i)
+    iccid_str = iccid.to_s.gsub(/\D/, "")
+    return false unless iccid_str.start_with?("89")
 
+    digits = iccid_str.chars.map(&:to_i)
     return false unless digits.length.between?(18, 20)
-    return false unless iccid.start_with?("89")
 
     provided_checksum = digits.pop
 
