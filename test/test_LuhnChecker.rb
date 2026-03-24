@@ -86,4 +86,43 @@ class TestLuhnChecker_imei < Minitest::Test
   end
 end
 
+class TestLuhnChecker_iccid < Minitest::Test
+  def test_length_of_iccid_too_long
+    refute LuhnCheckerLib.is_valid_ICCID?(89_701_000_000_000_000_164_545)
+    refute LuhnCheckerLib.is_valid_ICCID?(8_970_112_233_445_566_771_732_633)
+    refute LuhnCheckerLib.is_valid_ICCID?(8_970_100_000_000_000_001_493_736_734)
+  end
+
+  def test_length_of_iccid_too_short
+    refute LuhnCheckerLib.is_valid_ICCID?(89_701_000)
+    refute LuhnCheckerLib.is_valid_ICCID?(892_633)
+    refute LuhnCheckerLib.is_valid_ICCID?(80)
+    refute LuhnCheckerLib.is_valid_ICCID?(0)
+  end
+
+  def test_validity_iccid_true
+    assert LuhnCheckerLib.is_valid_ICCID?(897_019_919_070_918_254)
+    assert LuhnCheckerLib.is_valid_ICCID?(89_860_111_611_104_081_493)
+    assert LuhnCheckerLib.is_valid_ICCID?(8_988_303_000_000_614_224)
+  end
+
+  def test_validity_iccid_false_incorrect_control_digit
+    refute LuhnCheckerLib.is_valid_ICCID?(897_019_919_070_918_252)
+    refute LuhnCheckerLib.is_valid_ICCID?(89_860_111_611_104_081_496)
+    refute LuhnCheckerLib.is_valid_ICCID?(8_988_303_000_000_614_228)
+  end
+
+  def test_validity_iccid_false_broken_iccid
+    refute LuhnCheckerLib.is_valid_ICCID?(897_019_918_070_928_254)
+    refute LuhnCheckerLib.is_valid_ICCID?(89_861_111_621_104_071_493)
+    refute LuhnCheckerLib.is_valid_ICCID?(8_978_303_010_000_614_224)
+  end
+
+  def test_validity_iccid_false_starts_not_with_89_
+    refute LuhnCheckerLib.is_valid_ICCID?(617_019_919_070_918_250)
+    refute LuhnCheckerLib.is_valid_ICCID?(39_860_111_611_104_081_496)
+    refute LuhnCheckerLib.is_valid_ICCID?(8_588_313_000_010_614_227)
+  end
+end
+
 # bundle exec ruby -Ilib:test test/test_LuhnChecker.rb
