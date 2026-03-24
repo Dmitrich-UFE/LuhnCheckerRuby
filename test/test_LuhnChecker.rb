@@ -69,6 +69,24 @@ class TestLuhnChecker_imei < Minitest::Test
     refute LuhnCheckerLib.is_valid_IMEI?(8606)
     refute LuhnCheckerLib.is_valid_IMEI?(0)
   end
+
+  def test_validity_imei_true
+    assert LuhnCheckerLib.is_valid_IMEI?(351_756_051_523_999)
+    assert LuhnCheckerLib.is_valid_IMEI?(86_004_108_979_539_0)
+    assert LuhnCheckerLib.is_valid_IMEI?(8_600_410_897_953_82)
+  end
+
+  def test_validity_imei_false_incorrect_control_digit
+    refute LuhnCheckerLib.is_valid_IMEI?(351_756_051_523_998)
+    refute LuhnCheckerLib.is_valid_IMEI?(86_004_108_979_539_1)
+    refute LuhnCheckerLib.is_valid_IMEI?(8_600_410_897_953_89)
+  end
+
+  def test_validity_imei_false_broken_imei
+    refute LuhnCheckerLib.is_valid_IMEI?(352_756_071_523_999)
+    refute LuhnCheckerLib.is_valid_IMEI?(86_504_109_979_439_0)
+    refute LuhnCheckerLib.is_valid_IMEI?(8_601_510_897_853_82)
+  end
 end
 
 # bundle exec ruby -Ilib:test test/test_LuhnChecker.rb
