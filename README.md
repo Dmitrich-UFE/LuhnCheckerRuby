@@ -17,6 +17,10 @@ After installing, connect the lib into your ruby scripts: <font color="orange"><
 Methods:
     LuhnCheckerLib.is_valid_bank_card_number?(your_bank_card_number) - it returns true, if your_bank_card_number is valid; else false.
 
+    LuhnCheckerLib.is_valid_IMEI?(your_imei) - it returns true, if your_imei is valid; else false.
+
+    LuhnCheckerLib.is_valid_ICCID?(your_iccid) - it returns true, if your_iccid is valid; else false.
+
 
 ## License
 
